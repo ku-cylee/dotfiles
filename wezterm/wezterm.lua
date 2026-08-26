@@ -20,4 +20,11 @@ config.keys = {
   { key = 'q', mods = 'CTRL|SHIFT', action = wezterm.action.CloseCurrentPane { confirm = true } },
 }
 
+local ok, overrides = pcall(require, 'local')
+if ok then
+  for k, v in pairs(overrides) do
+    config[k] = v
+  end
+end
+
 return config

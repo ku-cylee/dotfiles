@@ -11,12 +11,14 @@ First, `cd` into the directory of this file, i.e. `cd <path-to-this-directory>`.
 Windows (cmd):
 
 ```
+if not exist "%USERPROFILE%\.config" mkdir "%USERPROFILE%\.config"
 mklink /J "%USERPROFILE%\.config\wezterm" "%CD%"
 ```
 
 Linux:
 
 ```
+mkdir -p ~/.config
 ln -s "$(pwd)" ~/.config/wezterm
 ```
 

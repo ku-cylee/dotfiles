@@ -20,10 +20,14 @@ config.keys = {
   { key = 'q', mods = 'CTRL|SHIFT', action = wezterm.action.CloseCurrentPane { confirm = true } },
 }
 
-local ok, overrides = pcall(require, 'local')
-if ok then
-  for k, v in pairs(overrides) do
-    config[k] = v
+if package.searchpath('local', package.path) then
+  local ok, overrides = pcall(require, 'local')
+  if ok then
+    for k, v in pairs(overrides) do
+      config[k] = v
+    end
+  else
+    wezterm.log_error('local.lua failed to load: ' .. tostring(overrides))
   end
 end
 

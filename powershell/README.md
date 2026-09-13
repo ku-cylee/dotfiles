@@ -11,22 +11,24 @@ script (`$PROFILE`) that runs on every shell start — same concept as `.bashrc`
 Link `Microsoft.PowerShell_profile.ps1` in this directory to the profile location. `mklink /H`
 creates a hardlink (no admin rights needed, unlike a symlink).
 
-First, `cd` into the directory of this file, i.e. `cd <path-to-this-directory>`. Then:
+The commands below are for **cmd** (`%VAR%` expansion and `mklink` are cmd built-ins; they
+will not run in PowerShell). First, `cd` into the directory of this file, i.e.
+`cd <path-to-this-directory>`. Then:
 
-PowerShell 7 (`pwsh`):
+PowerShell 7 (`pwsh`) — cmd:
 
 ```
 if not exist "%USERPROFILE%\Documents\PowerShell" mkdir "%USERPROFILE%\Documents\PowerShell"
-del "%USERPROFILE%\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+if exist "%USERPROFILE%\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" del "%USERPROFILE%\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 mklink /H "%USERPROFILE%\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" "%CD%\Microsoft.PowerShell_profile.ps1"
 ```
 
-Windows PowerShell 5.1 (optional — profile paths differ per version, but the settings work on
+Windows PowerShell 5.1 (optional, cmd — profile paths differ per version, but the settings work on
 both since PSReadLine ships with 5.1 too):
 
 ```
 if not exist "%USERPROFILE%\Documents\WindowsPowerShell" mkdir "%USERPROFILE%\Documents\WindowsPowerShell"
-del "%USERPROFILE%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+if exist "%USERPROFILE%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" del "%USERPROFILE%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 mklink /H "%USERPROFILE%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" "%CD%\Microsoft.PowerShell_profile.ps1"
 ```
 

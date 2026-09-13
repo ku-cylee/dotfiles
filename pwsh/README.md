@@ -1,6 +1,6 @@
-# powershell
+# pwsh
 
-PowerShell profile — configures [PSReadLine](https://github.com/PowerShell/PSReadLine) for
+PowerShell 7 (`pwsh`) profile — configures [PSReadLine](https://github.com/PowerShell/PSReadLine) for
 vi-style line editing and bash-style tab completion. Windows only.
 
 PSReadLine settings are runtime commands, not persisted state, so they live in the profile
@@ -15,24 +15,13 @@ The commands below are for **cmd** (`%VAR%` expansion and `mklink` are cmd built
 will not run in PowerShell). First, `cd` into the directory of this file, i.e.
 `cd <path-to-this-directory>`. Then:
 
-PowerShell 7 (`pwsh`) — cmd:
-
 ```
 if not exist "%USERPROFILE%\Documents\PowerShell" mkdir "%USERPROFILE%\Documents\PowerShell"
 if exist "%USERPROFILE%\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" del "%USERPROFILE%\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 mklink /H "%USERPROFILE%\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" "%CD%\Microsoft.PowerShell_profile.ps1"
 ```
 
-Windows PowerShell 5.1 (optional, cmd — profile paths differ per version, but the settings work on
-both since PSReadLine ships with 5.1 too):
-
-```
-if not exist "%USERPROFILE%\Documents\WindowsPowerShell" mkdir "%USERPROFILE%\Documents\WindowsPowerShell"
-if exist "%USERPROFILE%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" del "%USERPROFILE%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
-mklink /H "%USERPROFILE%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" "%CD%\Microsoft.PowerShell_profile.ps1"
-```
-
-Open a new PowerShell window to pick up the settings.
+Open a new pwsh window to pick up the settings.
 
 ## Files
 
@@ -41,7 +30,8 @@ Open a new PowerShell window to pick up the settings.
 ## Notes
 
 - If Documents is redirected (e.g. OneDrive on corporate machines), the paths above may be
-  wrong — run `$PROFILE` in PowerShell to see the real location.
+  wrong — run `$PROFILE` in pwsh to see the real location.
+- Windows PowerShell 5.1 is not covered; its profile lives under `Documents\WindowsPowerShell` instead.
 - Command history lives in `%APPDATA%\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt`
   but is machine-local session data, not tracked here.
 - Key settings in this file:

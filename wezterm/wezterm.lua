@@ -11,6 +11,10 @@ config.font = wezterm.font_with_fallback {
   'Sarasa Term K',
 }
 
+if wezterm.target_triple:find('windows') then
+  config.default_prog = { 'pwsh.exe', '-NoLogo' }
+end
+
 config.cursor_blink_rate = 0
 config.default_cursor_style = 'SteadyBar'
 

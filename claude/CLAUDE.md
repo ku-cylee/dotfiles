@@ -31,6 +31,7 @@ Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, sim
 **Touch only what you must. Clean up only your own mess.**
 
 When editing existing code:
+- Don't add comments unless necessary, e.g. they are hardly explainable by code.
 - Don't "improve" adjacent code, comments, or formatting.
 - Don't refactor things that aren't broken.
 - Match existing style, even if you'd do it differently.
@@ -41,6 +42,25 @@ When your changes create orphans:
 - Don't remove pre-existing dead code unless asked.
 
 The test: Every changed line should trace directly to the user's request.
+
+## 3.1 Git Safety
+
+**Git inspection is allowed; Git state changes require explicit instruction.**
+
+- Read-only Git commands such as status, diff, log, and show are allowed.
+- NEVER stage, commit, revert, reset, checkout, stash, pull, push, or otherwise modify repository state.
+
+## 3.2 Explicit Authorization
+
+**No implementation without an explicit go-ahead.**
+
+- Do not write or modify code, or take other implementation actions, until the
+  user explicitly asks for it. Discussing, analyzing, reviewing, or proposing
+  an approach does not authorize implementing it.
+- If, while carrying out an instruction, you identify additional work that is
+  not directly part of what was asked, do not just do it. Report what you
+  found, discuss it with the user, and get explicit approval before
+  implementing.
 
 ## 4. Goal-Driven Execution
 

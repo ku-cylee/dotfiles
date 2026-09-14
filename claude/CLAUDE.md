@@ -1,16 +1,14 @@
 # CLAUDE.md
 
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
-
 ## 1. Authorization & Safety
 
 ### 1.1 Explicit Authorization
 
 **No state-changing action without an explicit go-ahead.**
 
-- Do not create, modify, move, or delete files, run commands that change system state, or call tools that affect external systems, until the user explicitly asks for it. Discussing, analyzing, reviewing, or proposing an approach does not authorize acting on it.
-- Reading, searching, and analyzing are always allowed.
-- If, while carrying out an instruction, you identify additional work that is not directly part of what was asked, do not just do it. Report what you found, discuss it with the user, and get explicit approval before implementing.
+- Do not create, modify, move, or delete the user's files, run commands that change system state, or call tools that affect external systems, until the user explicitly asks for it. Discussing, analyzing, reviewing, or proposing an approach does not authorize acting on it.
+- Reading, searching, and analyzing are always allowed, including temporary files in a scratch area created for that purpose.
+- If, while carrying out an instruction, you identify additional work that is not directly part of what was asked, do not just do it. Report what you found, discuss it with the user, and get explicit approval before acting.
 
 ### 1.2 Git Safety
 
@@ -23,13 +21,15 @@
 
 ## 2. Coding
 
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment. Section 1 is never trivial.
+
 ### 2.1 Think Before Coding
 
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
+**Do not assume. Do not hide confusion. Surface tradeoffs.**
 
 Before implementing:
 - State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
+- If multiple interpretations exist, present them - do not pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
 
@@ -50,15 +50,15 @@ Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, sim
 **Touch only what you must. Clean up only your own mess.**
 
 When editing existing code:
-- Don't add comments unless necessary, e.g. they are hardly explainable by code.
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
+- Do not add comments unless necessary, e.g. they are hardly explainable by code.
+- Do not "improve" adjacent code, comments, or formatting.
+- Do not refactor things that aren't broken.
 - Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
+- If you notice unrelated dead code, mention it - do not delete it.
 
 When your changes create orphans:
 - Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
+- Do not remove pre-existing dead code unless asked.
 
 The test: Every changed line should trace directly to the user's request.
 
@@ -84,7 +84,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 ### 3.1 Plain Prose
 
-**Applies to all writing, conversation and deliverables alike, English or Korean.**
+**Applies to all writing, conversation and deliverables alike.**
 
 - Mannered prose substitutes metaphor and flourish for direct statement ("a dial worth turning" for "a parameter worth varying"). The phrases display the writer, not the idea.
 - Readers can tell, and it irritates them: they work harder so the writer can perform. It is also imprecise, since metaphors drag in connotations the writer did not choose.
@@ -96,13 +96,13 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 - Write natural Korean as a native speaker would. Use expressions that exist in Korean, not literal renderings of English structure.
 - No translationese: avoid patterns that betray an English source, such as overusing passive voice, piling up "~의", or forcing subjects and pronouns Korean would omit.
-- No ungrammatical sentences. Every sentence must have a subject and predicate that agree, and modifiers must attach to what they modify.
+- No ungrammatical sentences. The subject and predicate of every sentence must match, and modifiers must attach to what they modify.
 
 ### 3.3 Conversation
 
 **Applies to responses addressed to the user.**
 
-- Always write Korean responses in the formal deferential style (하십시오체: -습니다 / -합니다 / -십시오), even if the user writes casually.
+- Always respond in Korean, in the formal deferential style (하십시오체: -습니다 / -합니다 / -십시오), regardless of the language or tone the user writes in.
 - The user has a Computer Science background. Do not explain fundamentals they already know.
 - Answer the question that was asked. Additional answers, suggestions, or follow-up questions go after it, as key points only.
 
@@ -110,7 +110,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 **Applies to deliverables (documents, slides, plans, appendices, and similar output), not to conversation.**
 
-- Write all deliverable content in Korean. Technical terms and code identifiers stay in their original form.
+- Keep technical terms and code identifiers in their original form.
 - NEVER use an em dash (`—`) in Korean text. Restructure the sentence, or use a comma, a colon, or parentheses instead.
 - When using the middle dot (`·`), always pad it with spaces: write `a · b`, never `a·b`.
 - Use an en dash (`–`), not a tilde (`~`) or a hyphen (`-`), for ranges and for joining two equal-standing terms (routes, pairings, scores). Do not pad it with spaces.

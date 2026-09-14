@@ -17,6 +17,14 @@ if exist "%USERPROFILE%\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" d
 mklink /H "%USERPROFILE%\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" "%CD%\Microsoft.PowerShell_profile.ps1"
 ```
 
+Windows (pwsh):
+
+```
+New-Item -ItemType Directory -Force "$env:USERPROFILE\Documents\PowerShell" | Out-Null
+Remove-Item -Force "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -ErrorAction SilentlyContinue
+New-Item -ItemType HardLink -Path "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -Target "$PWD\Microsoft.PowerShell_profile.ps1"
+```
+
 Linux:
 
 ```

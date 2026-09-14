@@ -15,6 +15,12 @@ Windows (cmd):
 mklink /J "%LOCALAPPDATA%\nvim" "%CD%"
 ```
 
+Windows (pwsh):
+
+```
+New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim" -Target (Get-Location).Path
+```
+
 Linux:
 
 ```

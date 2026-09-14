@@ -15,6 +15,13 @@ if not exist "%USERPROFILE%\.config" mkdir "%USERPROFILE%\.config"
 mklink /J "%USERPROFILE%\.config\wezterm" "%CD%"
 ```
 
+Windows (pwsh):
+
+```
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.config" | Out-Null
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.config\wezterm" -Target (Get-Location).Path
+```
+
 Linux:
 
 ```

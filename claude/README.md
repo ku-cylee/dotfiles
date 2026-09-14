@@ -16,6 +16,14 @@ if exist "%USERPROFILE%\.claude\CLAUDE.md" del "%USERPROFILE%\.claude\CLAUDE.md"
 mklink /H "%USERPROFILE%\.claude\CLAUDE.md" "%CD%\CLAUDE.md"
 ```
 
+Windows (pwsh):
+
+```
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude" | Out-Null
+Remove-Item -Force "$env:USERPROFILE\.claude\CLAUDE.md" -ErrorAction SilentlyContinue
+New-Item -ItemType HardLink -Path "$env:USERPROFILE\.claude\CLAUDE.md" -Target "$PWD\CLAUDE.md"
+```
+
 Linux:
 
 ```

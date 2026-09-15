@@ -34,3 +34,7 @@ ln -f "$(pwd)/CLAUDE.md" ~/.claude/CLAUDE.md
 ## Files
 
 - `CLAUDE.md`: User-level instructions loaded into every Claude Code session.
+
+## Local Instructions
+
+`CLAUDE.md` references `~/.claude/CLAUDE.local.md` via `@CLAUDE.local.md` for environment- or device-specific instructions. This file is not part of this repo; create it directly at that path when needed.

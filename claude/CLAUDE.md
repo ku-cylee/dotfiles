@@ -118,3 +118,9 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ## 4. Tool-Call Encoding
 
 - Always write Korean (and other non-ASCII) strings in tool-call parameters as literal UTF-8; never as `\uXXXX` unicode escapes.
+
+## 5. Local Instructions
+
+Refer to the following file for environment- or device-specific instructions.
+
+@CLAUDE.local.md

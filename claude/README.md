@@ -31,6 +31,12 @@ mkdir -p ~/.claude
 ln -f "$(pwd)/CLAUDE.md" ~/.claude/CLAUDE.md
 ```
 
+**Re-run this after every edit to `CLAUDE.md`.** An editor that replaces the file instead of writing it in place (as some tools do) silently breaks the hard link, leaving `~/.claude/CLAUDE.md` stale with no error. Verify with:
+
+```
+diff ~/.claude/CLAUDE.md CLAUDE.md
+```
+
 ## Files
 
 - `CLAUDE.md`: User-level instructions loaded into every Claude Code session.
